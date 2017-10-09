@@ -1,0 +1,4 @@
+api/config/
+api/vendor/
+api/storage/cache/
+api/storage/log/
