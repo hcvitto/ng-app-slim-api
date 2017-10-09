@@ -1,0 +1,35 @@
+<div class="hyper-accordion">
+
+	<div class="hyper-accordion-panel" *ngFor="let panel of panelsConfig; let i = index">
+
+		<hyper-accordion-panel-head editable="{{panel.editable}}" icon="{{panel.icon}}" title="{{panel.title}}" id="{{i}}"></hyper-accordion-panel-head>
+
+		<ng-container *ngIf="openPanels[i]">
+			<dynamic-content type="{{panel.comp}}" [context]="context"></dynamic-content>
+		</ng-container>
+
+	</div>
+
+	<!--div class="hyper-accordion-panel">
+
+		<hyper-accordion-panel-head editable="true" icon="font" title="Dati anagrafici" id="0"></hyper-accordion-panel-head>
+
+		<ng-container *ngIf="openPanels[0]">
+			<content-anagrafica [isEditing]="editingPanels[0]"></content-anagrafica>
+		</ng-container>
+
+	</div>
+
+
+	<div class="hyper-accordion-panel">
+
+		<hyper-accordion-panel-head icon="microphone" title="Presentazione" id="1"></hyper-accordion-panel-head>
+
+		<ng-container *ngIf="openPanels[1]">
+			<content-presentazione [isEditing]="editingPanels[1]">Presentazione</content-presentazione>
+		</ng-container>
+		
+	</div-->
+
+</div>
+

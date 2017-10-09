@@ -1,0 +1,10 @@
+<div class="hyper-accordion-panel-head">
+
+	<hyper-icon *ngIf="editable" icon="pencil" classe="edit-panel-icon" (click)="openEditing(id)"></hyper-icon>
+
+	<div class="panel-head-title" (click)="togglePanel(id)">
+		<hyper-icon icon="{{ icon }}" classe="deco-panel-icon"></hyper-icon>
+		<span>{{ title }}</span>
+	</div>
+
+</div>

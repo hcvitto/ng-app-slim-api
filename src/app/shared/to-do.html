@@ -1,0 +1,74 @@
+icon-component
+	<i class="fa fa-{{ icon }}"></i>
+
+button-component
+	<button type="button" {{ action }}>
+		icon-component
+		{{ text }}
+	</button>
+
+action-component
+	<a {{ action }}>
+		icon-component
+		{{ text }} ?
+	</a>
+
+title-bar {{ bold }} (first level) ?
+	<div {{ bg-color }}>
+		icon-component ?
+		{{ title }}
+		action-component ? -> [ hide content panel, show form ] 
+	</div>
+	
+title-bar-working-experience-first-level x (extends title-bar?)
+	<div {{ bg-color }}>
+		{{ data-start }} - {{ data-end }}
+		{{ company-name }} bold
+		{{ action-component }} -> edit
+		{{ action-component }} -> trash
+	</div>
+
+dato 1 col
+	<div class="row">
+		<div class="col-12">
+			{{ label }} ?
+			{{ text }}
+		</div>
+	</div>
+
+dato lista ??
+	<div class="row">
+		<div class="col-12">
+			mostra allegati con lista ??
+		</div>
+	</div>
+
+dato 2 col
+	<div class="row">
+		<div class="col-{{ width }}">
+			{{ label }}
+		</div>
+		<div class="col-{{ width }}">
+			{{ text }}
+		</div>
+
+panel-head x
+	title-bar
+
+panel-content x 
+	button-component -> add data ?
+	/ dato 2 col
+	/ title-bar x
+	/	dato 1 col
+	/	dato lista
+	..
+
+form multi campo
+	radio buttons
+	text
+	select
+	slider
+	switch
+	add in place 
+	delete in place 
+	rename in place

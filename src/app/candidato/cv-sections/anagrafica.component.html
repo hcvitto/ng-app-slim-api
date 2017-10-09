@@ -1,0 +1,12 @@
+<div class="hyper-accordion-panel">
+	<div class="hyper-accordion-panel-content">
+		<form-anagrafica *ngIf="context.editingPanels[0] == true else dataList"></form-anagrafica>
+		<ng-template #dataList>
+			<div class="data-list">
+				<row-2-col label="Nome" data="{{ userData.name }}"></row-2-col> 
+				<row-2-col label="Cognome" data="{{ userData.surname }}"></row-2-col>
+				<row-2-col label="Occupazione" data="{{ userData.activity }}"></row-2-col>
+			</div>
+		</ng-template>
+	</div>
+</div>

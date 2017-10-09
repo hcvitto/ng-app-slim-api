@@ -1,0 +1,58 @@
+#footer-one {
+	background: #F3F5FA;
+  margin-top: 50px;
+  position: relative;
+}
+#footer-one > .container {
+  padding: 45px 0;
+}
+#footer-one .logo {
+  background: url('/assets/img/logo@2x.png') no-repeat center;
+  background-size: 143px 46px;
+  border: none;
+  height: 48px;
+  margin: 0 auto;
+  position: inherit;
+  width: 145px;
+}
+#footer-one .social {
+  font-size: 18px;
+  margin-top: 30px;
+  text-align: center;
+}
+#footer-one .social i {
+  color: #32aeca;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+#footer-one > i {
+	bottom: -30px;
+	color: #F3F5FA;
+	font-size: 50px;
+	left: 50%;
+	position: absolute;
+	-webkit-transform: translateX(-50%);
+	-moz-transform: translateX(-50%);
+	transform: translateX(-50%);
+} 
+#footer-two {
+	text-align: center;
+  font-size: 16px;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+#footer-two a {
+  color: #b5c1c7;
+  text-decoration: none;
+}
+#footer-two a:hover {
+  color: #32aeca;
+}
+#footer-three {
+  background: #5a6f7a;
+  color: #fff;
+  font-size: 12px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  text-align: center;
+}
