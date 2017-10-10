@@ -8,3 +8,4 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 Get info on zendframework/zend-config for config management
 Catch default slim exception
+How to use JWT for long user sesssion
