@@ -76,8 +76,8 @@ $container['activation'] = function ($c) {
 # Action factories Controllers
 # -----------------------------------------------------------------------------
 
-$container['App\Controllers\HomeController'] = function ($c) {
-    return new App\Controllers\HomeController(
+$container['App\Controllers\AuthController'] = function ($c) {
+    return new App\Controllers\AuthController(
 		$c->get('view'), 
 		$c->get('logger'),
 		$c->get('App\Repositories\HomeRepository')
@@ -87,8 +87,7 @@ $container['App\Controllers\HomeController'] = function ($c) {
 $container['App\Controllers\UserController'] = function ($c) {
     return new App\Controllers\UserController(
 		$c->get('view'), 
-		$c->get('logger'),
-		$c->get('App\Repositories\UserRepository')
+		$c->get('logger')
     );
 };
 # -----------------------------------------------------------------------------

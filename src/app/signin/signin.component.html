@@ -1,35 +1,36 @@
-<h1>Signin</h1>
-<div *ngIf="hasError && signinForm.form.valid">Errors</div>
-<form (ngSubmit)="signinForm.form.valid && login()" #signinForm="ngForm" novalidate>
-	<div class="row">
-		<div class="col-md-4">
-			<div class="form-group">
-		    <label for="username">Username</label>
-		    <input type="text" class="form-control" [(ngModel)]="model.username" name="username" id="username" #username="ngModel" placeholder="Username" required>
-		    <div *ngIf="signinForm.submitted && !username.valid" class="error-msg">Required field</div>
-		  </div>
-		</div>
-		<div class="col-md-4">
-		  <div class="form-group">
-		    <label for="password">Password</label>
-		    <input type="password" class="form-control" [(ngModel)]="model.password" name="password" id="password" #password="ngModel" placeholder="Password" required>
-		    <div *ngIf="signinForm.submitted && !password.valid" class="error-msg">Required field</div>
-		  </div>
-		</div>
-	</div>
-	<button type="submit" class="btn btn-success" [disabled]="!signinForm.form.valid || loading">Invia <span [hidden]="!loading">Loading</span></button>
-</form>
-<h2>Todo</h2>
-<ul>
-	<li><del>check data against server</del></li>
-	<li>implement <del>auth system</del> / jwt token</li>
-	<li><del>auth sitewide</del></li>
-</ul>
-<h3>Resources</h3>
-<ul>
-	<li><a href="https://www.sitepoint.com/php-authorization-jwt-json-web-tokens/" target="blank">1</a></li>
-	<li><a href="http://jasonwatmore.com/post/2016/08/16/angular-2-jwt-authentication-example-tutorial" target="blank">2</a></li>
-	<li><a href="https://scotch.io/tutorials/the-anatomy-of-a-json-web-token" target="blank">3</a></li>
-	<li><a href="https://scotch.io/tutorials/the-ins-and-outs-of-token-based-authentication" target="blank">4</a></li>
-	<li><a href="https://jwt.io/" target="blank">5</a></li>
-</ul>
+<div class="container-short">
+	<h1>Signin</h1>
+	<div *ngIf="hasError && signinForm.form.valid">Errors</div>
+	<form (ngSubmit)="signinForm.form.valid && login()" #signinForm="ngForm" novalidate>
+		<div class="form-group">
+	    <label for="username">Username</label>
+	    <input type="text" class="form-control" [(ngModel)]="model.username" name="username" id="username" #username="ngModel" placeholder="Username" required>
+	    <div *ngIf="signinForm.submitted && !username.valid" class="error-msg">Required field</div>
+	  </div>
+	  <div class="form-group">
+	    <label for="password">Password</label>
+	    <input type="password" class="form-control" [(ngModel)]="model.password" name="password" id="password" #password="ngModel" placeholder="Password" required>
+	    <div *ngIf="signinForm.submitted && !password.valid" class="error-msg">Required field</div>
+	  </div>
+	  <div class="row">
+	  	<div class="col-md-6"><button type="submit" class="btn btn-success" [disabled]="!signinForm.form.valid || loading">Invia <span [hidden]="!loading">Loading</span></button></div>
+	  	<div class="col-md-6 text-right"><a routerLink="/signup">Signup</a></div>
+	  </div>
+	</form>
+	<hr>
+	<h2>Todo</h2>
+	<ul>
+		<li><del>check data against server</del></li>
+		<li><del>implement auth system / jwt token</del></li>
+		<li><del>auth sitewide</del></li>
+		<li>clean subscription</li>
+	</ul>
+	<h3>Resources</h3>
+	<ul>
+		<li><a href="https://www.sitepoint.com/php-authorization-jwt-json-web-tokens/" target="blank">1</a></li>
+		<li><a href="http://jasonwatmore.com/post/2016/08/16/angular-2-jwt-authentication-example-tutorial" target="blank">2</a></li>
+		<li><a href="https://scotch.io/tutorials/the-anatomy-of-a-json-web-token" target="blank">3</a></li>
+		<li><a href="https://scotch.io/tutorials/the-ins-and-outs-of-token-based-authentication" target="blank">4</a></li>
+		<li><a href="https://jwt.io/" target="blank">5</a></li>
+	</ul>
+</div>

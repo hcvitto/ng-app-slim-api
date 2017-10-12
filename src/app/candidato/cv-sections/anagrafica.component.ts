@@ -14,11 +14,10 @@ export class AnagraficaComponent implements OnInit {
   }
 
   ngOnInit() {
-  	this.userData = this.userService.getUserData(1)
-  	  .subscribe(result => {
+    this.userService.getUserData(1)
+      .subscribe(result => {
         this.userData = result;
       });
-
   }
 
 }

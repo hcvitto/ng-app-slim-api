@@ -6,6 +6,8 @@ import { Observer } from "rxjs/Observer";
 import 'rxjs/add/operator/map';
 import "rxjs/add/operator/share";
 
+import * as myGlobals from "../shared/globals";
+
 @Injectable()
 export class AuthService {
     
@@ -32,13 +34,12 @@ export class AuthService {
 
   login(username: string, password: string): Observable<boolean> {
 
-    let url = 'http://localhost/artigiani/api/public/users';
     let payload = JSON.stringify({ username: username, password: password });
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
 
 
-    return this.http.post(url, payload, options)
+    return this.http.post(myGlobals.API_URL + 'signin', payload, options)
       .map((response: Response) => {
         // login successful if there's a jwt token in the response
         let token = response.json() && response.json().jwt;

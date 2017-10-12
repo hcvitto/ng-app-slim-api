@@ -1,40 +1,59 @@
 import { Injectable } from '@angular/core';
+import { Store } from '@ngrx/store';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
+import { CURRENT_USER } from '../app.actions';
+
+import * as myGlobals from "../shared/globals";
+
+interface AppStore {
+  currentUser: any;
+}
+
+
 @Injectable()
 export class UserService {
 
-  constructor(private http: Http) { }
+  currentUser: Observable<any>;
 
-  fakeLoginCredentials: any = {
-    username: 'vitto',
-    password: 'vitto',
+  constructor(private http: Http, private store: Store<AppStore>) {
+    this.currentUser = store.select('currentUser'); // Bind an observable of current user to "UserService"
   }
 
-  user: any = {}
+  user: any = {} // used in components, until store is used
 
-  getUserData(id: number): Observable<boolean> {
-    // TODO: get data from server with JWT
-    let url = 'http://localhost/artigiani/api/public/user/' + id;
+  getUserData(id: number): Observable<any> {
+
+    // TODO: user store
+    // check if there is a current user in store (means is already logged in)
+    // if true return data from store
+    //this.store.dispatch({type: CURRENT_USER, payload: this.fakeLoginCredentials});
+    /* 
+    return this.currentUser
+      .map(user => {
+        return user;
+      });
+    */
+    // else return data from server
     let currentUser = JSON.parse(localStorage.getItem('currentUser'));
-
     let headers = new Headers({ 'Content-Type': 'application/json' });
     headers.append('Authorization', 'Bearer ' + currentUser.token);
-
     let options = new RequestOptions({ headers: headers });
 
-
-    return this.http.get(url, options)
+    return this.http.get(myGlobals.API_URL + 'user/' + id, options)
       .map((response: Response) => {
         // TODO : check response
+        // update store with current user from server
+        // this.store.dispatch({ type: CURRENT_USER, payload: userData });
         return response.json().data;
       });
+
   }
 
   updateUser(user) {
-  	//this.user = user;
+  	this.user = user;
   }
 
 }
