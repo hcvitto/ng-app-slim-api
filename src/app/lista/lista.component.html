@@ -1,0 +1,28 @@
+<div *ngIf="errorMsg" class="error">{{ errorMsg }}</div>
+<div [@fadeIn]>
+	<ul class="lista-artigiani" [ngClass]="{'landed': landed}" *ngIf="!errorMsg">	
+		<li *ngFor="let shop of data" [ngClass]="{'active': activeEl === shop.id}">
+			
+				<div class="main-data">
+					<a routerLink="/artigiani/{{ shop.slug }}">
+						<div class="slide">
+							<div class="img-wrapper" [ngStyle]="{'background-image': 'url(' + shop.img + ')'}"></div>
+							<div class="data">
+								<h1>{{ shop.nome }}
+									<div><span *ngFor="let a of shop.attivita">{{ a }} </span></div>
+								</h1>
+							</div>
+						</div>
+				  </a>
+					<div class="toggle" (click)="setActive(shop.id)">
+						<span>+</span>
+					</div>
+				</div>
+				<div class="back-data deep-orange lighten-1">
+					<a *ngFor="let s of shop.social" href="{{ s.url }}"><i class="fa fa-{{ s.nome }}"></i></a>
+					<a routerLink="/artigiani/{{ shop.slug }}"><i class="fa fa-info"></i></a>
+				</div>
+			
+		</li>
+	</ul>
+</div>

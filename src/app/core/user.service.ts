@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Store } from '@ngrx/store';
+//import { Store } from '@ngrx/store';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
@@ -18,25 +18,25 @@ export class UserService {
 
   currentUser: Observable<any>;
 
-  constructor(private http: Http, private store: Store<AppStore>) {
-    this.currentUser = store.select('currentUser'); // Bind an observable of current user to "UserService"
+  //constructor(private http: Http, private store: Store<AppStore>) {
+  constructor(private http: Http) {
+    //this.currentUser = store.select('currentUser'); // Bind an observable of current user to "UserService"
   }
 
   user: any = {} // used in components, until store is used
 
   getUserData(id: number): Observable<any> {
-
     // TODO: user store
-    // check if there is a current user in store (means is already logged in)
+    // check if there is a current user in store to get his data
     // if true return data from store
-    //this.store.dispatch({type: CURRENT_USER, payload: this.fakeLoginCredentials});
-    /* 
+
     return this.currentUser
       .map(user => {
         return user;
       });
-    */
+
     // else return data from server
+    /*
     let currentUser = JSON.parse(localStorage.getItem('currentUser'));
     let headers = new Headers({ 'Content-Type': 'application/json' });
     headers.append('Authorization', 'Bearer ' + currentUser.token);
@@ -46,10 +46,10 @@ export class UserService {
       .map((response: Response) => {
         // TODO : check response
         // update store with current user from server
-        // this.store.dispatch({ type: CURRENT_USER, payload: userData });
+        this.store.dispatch({ type: CURRENT_USER, payload: response.json().data });
         return response.json().data;
       });
-
+    */
   }
 
   updateUser(user) {

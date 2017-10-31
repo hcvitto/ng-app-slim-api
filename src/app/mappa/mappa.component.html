@@ -1,0 +1,16 @@
+<div [@fadeIn]>
+  <agm-map [latitude]="centerMap.lat" [longitude]="centerMap.lon" [zoom]="16" #mappa>
+    <agm-marker *ngFor="let pin of data" 
+    	[latitude]="pin.lat" 
+    	[longitude]="pin.lon" 
+    	[openInfoWindow]="true">
+    	<agm-info-window>
+    		<img class="info-window-img" src="{{pin.img}}" alt=" ">
+  	  	<div class="nome"><a routerLink="/artigiani/{{pin.slug}}">{{pin.nome}}</a></div>
+  	  	<span *ngFor="let attivita of pin.attivita">{{attivita}}, </span><br>
+  	  	<a class="website-link" href="{{pin.website}}" target="blank">Visita il sito</a>
+    	</agm-info-window>
+    </agm-marker>
+  </agm-map>
+</div>
+

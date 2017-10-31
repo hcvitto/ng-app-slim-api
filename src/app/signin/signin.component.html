@@ -1,36 +1,81 @@
-<div class="container-short">
-	<h1>Signin</h1>
-	<div *ngIf="hasError && signinForm.form.valid">Errors</div>
-	<form (ngSubmit)="signinForm.form.valid && login()" #signinForm="ngForm" novalidate>
-		<div class="form-group">
-	    <label for="username">Username</label>
-	    <input type="text" class="form-control" [(ngModel)]="model.username" name="username" id="username" #username="ngModel" placeholder="Username" required>
-	    <div *ngIf="signinForm.submitted && !username.valid" class="error-msg">Required field</div>
-	  </div>
-	  <div class="form-group">
-	    <label for="password">Password</label>
-	    <input type="password" class="form-control" [(ngModel)]="model.password" name="password" id="password" #password="ngModel" placeholder="Password" required>
-	    <div *ngIf="signinForm.submitted && !password.valid" class="error-msg">Required field</div>
-	  </div>
-	  <div class="row">
-	  	<div class="col-md-6"><button type="submit" class="btn btn-success" [disabled]="!signinForm.form.valid || loading">Invia <span [hidden]="!loading">Loading</span></button></div>
-	  	<div class="col-md-6 text-right"><a routerLink="/signup">Signup</a></div>
-	  </div>
-	</form>
+<div class="form-container" [@fadeIn]>
+	<div id="bg" class="deep-orange"></div>
+	<div id="form-wrapper">
+		<div class="logo-icon">
+			<i class="fa fa-superpowers"></i>
+		</div>
+		<h1>Signin</h1>
+		<div id="form-bg" [@formUp]>
+			<div *ngIf="hasError && signinForm.form.valid" class="form-response">Errors</div>
+			<form (ngSubmit)="signinForm.form.valid && login()" #signinForm="ngForm" novalidate>
+
+				<!--div class="form-group">
+			    <label for="email" class="hidden">Email</label>
+			    <div class="input-group mb-2 mb-sm-0">
+	        	<div class="input-group-addon"><i class="fa fa-at"></i></div>
+	        	<input type="email" class="form-control" [(ngModel)]="model.email" name="email" id="email" #email="ngModel" placeholder="Email" required>
+	      	</div>
+			    <div *ngIf="signinForm.submitted && !email.valid" class="error-msg">Required field</div>
+			  </div-->
+
+			  <!--div class="form-group">
+				  <label for="password" class="hidden">Password</label>
+			  	<div class="input-group mb-2 mb-sm-0">
+	        	<div class="input-group-addon"><i class="fa fa-lock"></i></div>
+				    <input type="password" class="form-control" [(ngModel)]="model.password" name="password" id="password" #password="ngModel" placeholder="Password" required>
+				  </div>
+			    <div *ngIf="signinForm.submitted && !password.valid" class="error-msg">Required field</div>
+			  </div-->
+
+			  <div class="md-form">
+	    		<i class="fa fa-envelope prefix"></i>
+	    		<input mdbActive type="email" name="email" id="email" class="form-control" [(ngModel)]="model.email" #email="ngModel" required mdbInputValidate>
+	    		<label for="email">Email</label>
+				</div>
+
+			  <div class="md-form">
+	    		<i class="fa fa-lock prefix"></i>
+	    		<input mdbActive type="password" name="password" id="password" class="form-control" [(ngModel)]="model.password" #password="ngModel" required mdbInputValidate>
+	    		<label for="password">Password</label>
+				</div>
+			  
+			  <div class="row">
+			  	<div class="col">
+			  		<button type="submit" class="btn deep-orange darken-3 waves-light" [ngClass]="{'disabled': !signinForm.form.valid || loading}" mdbRippleRadius>Invia</button>
+			  		<i *ngIf="!loading" class="fa fa-loading"></i>
+			  	</div>
+			  	<div class="col text-right">
+			  		<a routerLink="/signup">Signup</a>
+			  	</div>
+			  </div>
+			</form>
+		</div>
+	</div>
+</div>
+	<!-- 
 	<hr>
 	<h2>Todo</h2>
 	<ul>
-		<li><del>check data against server</del></li>
-		<li><del>implement auth system / jwt token</del></li>
+		<li>
+			check data against server
+			<ul>
+				<li> - public / private api</li>
+			</ul>
+		</li>
+		<li>
+			implement auth system / jwt token
+			<ul>
+				<li> - long time token</li>
+				<li> - discard token</li>
+				<li> - resources:	<a href="https://www.sitepoint.com/php-authorization-jwt-json-web-tokens/" target="blank">1</a>
+					<a href="http://jasonwatmore.com/post/2016/08/16/angular-2-jwt-authentication-example-tutorial" target="blank">2</a>
+					<a href="https://scotch.io/tutorials/the-anatomy-of-a-json-web-token" target="blank">3</a>
+					<a href="https://scotch.io/tutorials/the-ins-and-outs-of-token-based-authentication" target="blank">4</a>
+					<a href="https://jwt.io/" target="blank">5</a>
+				</li>
+			</ul>
+		</li>
 		<li><del>auth sitewide</del></li>
-		<li>clean subscription</li>
+		<li>clean service subscription</li>
 	</ul>
-	<h3>Resources</h3>
-	<ul>
-		<li><a href="https://www.sitepoint.com/php-authorization-jwt-json-web-tokens/" target="blank">1</a></li>
-		<li><a href="http://jasonwatmore.com/post/2016/08/16/angular-2-jwt-authentication-example-tutorial" target="blank">2</a></li>
-		<li><a href="https://scotch.io/tutorials/the-anatomy-of-a-json-web-token" target="blank">3</a></li>
-		<li><a href="https://scotch.io/tutorials/the-ins-and-outs-of-token-based-authentication" target="blank">4</a></li>
-		<li><a href="https://jwt.io/" target="blank">5</a></li>
-	</ul>
-</div>
+	-->

@@ -1,0 +1,30 @@
+.form-container {
+	-webkit-transform: translateY(-40px);
+	-moz-transform: translateY(-40px);
+	transform: translateY(-40px);
+}
+form {
+	padding: 15px 0;
+}
+.inputVal {
+	top: 40px;
+}
+.md-form {
+	margin-bottom: 3rem;
+}
+[type=email],
+[type=password] {
+	font-size: 1.6rem;
+}
+label {
+	font-size: 1.3rem;
+	top: 0.4rem;
+}
+[type=submit] {
+	font-size: 1.2rem;
+}
+.form-response {
+  margin: 10px 0;
+  color: red;
+  text-align: center;
+}

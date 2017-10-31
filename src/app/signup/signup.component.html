@@ -1,40 +1,97 @@
-<div class="container-short">
-	<h1>Signup</h1>
-	<div *ngIf="submitted && signupForm.form.valid">Thank you</div>
-	<form (ngSubmit)="signupForm.form.valid && register()" #signupForm="ngForm" novalidate [hidden]="submitted && register()">
-		<div class="form-group">
-	    <label for="name">Name</label>
-	    <input type="text" class="form-control" [(ngModel)]="model.name" name="name" id="name" #name="ngModel" placeholder="Name" required>
-	    <div *ngIf="signupForm.submitted && !name.valid" class="error-msg">Required field</div>
-	  </div>
-	  <div class="form-group">
-	    <label for="surname">Surname</label>
-	    <input type="text" class="form-control" [(ngModel)]="model.surname" name="surname" id="surname" #surname="ngModel" placeholder="Surname" required>
-	    <div *ngIf="signupForm.submitted && !surname.valid" class="error-msg">Required field</div>
-	  </div>
-	  <div class="form-group">
-	    <label for="activity">Activity</label>
-	    <input type="text" class="form-control" [(ngModel)]="model.activity" name="activity" id="activity" #activity="ngModel" placeholder="Activity" required>
-	    <div *ngIf="signupForm.submitted && !activity.valid" class="error-msg">Required field</div>
-	  </div>
-		<button type="submit" class="btn btn-success" [disabled]="!signupForm.valid">Invia</button>
-	</form>
-	<hr>
-	<h2>Todo</h2>
-	<ul>
-		<li><del>inputs valid class on landing</del></li>
-		<li><del>save data in user service</del></li>
-		<li>save data in user service on server</li>
-		<li><del>pass user service data in header component: ?? observable ??</del></li>
-		<li>use <a href="https://gist.github.com/btroncone/a6e4347326749f938510" target="blank">app store</a></li>
-	</ul>
-	<h3>Resources</h3>
-	<ul>
-		<li><a href="http://jasonwatmore.com/post/2016/09/29/angular-2-user-registration-and-login-example-tutorial" target="blank">1</a></li>
-	</ul>
-	<h4>Other resources</h4>
-	<ul>
-		<li>check reactive forms (<a href="https://angular.io/guide/reactive-forms" target="blank">link</a>)</li>
-		<li>check dynamic forms (<a href="https://angular.io/guide/dynamic-form" target="blank">link</a>)</li>
-	</ul>
+<div class="form-container" [@fadeIn]>
+	<div id="bg" class="deep-orange"></div>
+	<div id="form-wrapper">
+		<div class="logo-icon">
+			<i class="fa fa-superpowers"></i>
+		</div>
+		<h1>Registrati</h1>
+		<div id="form-bg" [@formUp]>
+			<div *ngIf="submitted && signupForm.form.valid" class="form-response">{{ responseMsg }}</div>
+			<form (ngSubmit)="signupForm.form.valid && signup()" #signupForm="ngForm" novalidate>
+
+			  <div class="md-form">
+	    		<i class="fa fa-envelope prefix"></i>
+	    		<input mdbActive type="email" name="email" id="email" class="form-control" [(ngModel)]="model.email" #email="ngModel" required mdbInputValidate>
+	    		<label for="email">Email</label>
+				</div>
+
+			  <div class="md-form">
+	    		<i class="fa fa-lock prefix"></i>
+	    		<input mdbActive type="{{showPassord ? 'text' : 'password'}}" name="password" id="password" class="form-control" [(ngModel)]="model.password" #password="ngModel" required mdbInputValidate>
+	    		<label for="password">Password</label>
+				</div>
+			  
+			  <div class="md-form">
+					<label style="position: relative;padding-left: 30px;">
+						<input type="checkbox" class="form-control" name="showPassword" id="showPassword" (click)="showPassword($event)">
+						<div class="input-transform"></div>
+						Mostra password
+					</label>
+			  </div>
+
+			  <div class="row">
+			  	<div class="col">
+			  		<button type="submit" class="btn deep-orange darken-3 waves-light" [ngClass]="{'disabled': !signupForm.form.valid}" mdbRippleRadius>Invia</button>
+			  		<i *ngIf="!loading" class="fa fa-loading"></i>
+			  	</div>
+			  	<div class="col text-right">
+			  		<a routerLink="/signin">Signin</a>
+			  	</div>
+			  </div>
+
+			  <!--
+				<div class="form-group">
+			    <label for="email" class="hidden">Email</label>
+			    <div class="input-group mb-2 mb-sm-0">
+	        	<div class="input-group-addon"><i class="fa fa-at"></i></div>
+	        	<input type="email" class="form-control" [(ngModel)]="model.email" name="email" id="email" #email="ngModel" placeholder="Email" required>
+	      	</div>
+			    <div *ngIf="signupForm.submitted && !email.valid" class="error-msg">Required field</div>
+			  </div>
+
+			  <div class="form-group">
+			    <label for="password" class="hidden">Password</label>
+			    <div class="input-group mb-2 mb-sm-0">
+	        	<div class="input-group-addon"><i class="fa fa-lock"></i></div>
+	        	<input type="{{showPassord ? 'text' : 'password'}}" class="form-control" [(ngModel)]="model.password" name="password" id="password" #password="ngModel" placeholder="Password" required>
+	      	</div>
+			    <div *ngIf="signupForm.submitted && !password.valid" class="error-msg">Campo obbligatorio</div>
+			  </div>
+
+			  <div class="form-group">
+					<label style="position: relative;padding-left: 30px;">
+						<input type="checkbox" class="form-control" name="showPassword" id="showPassword" (click)="showPassword($event)">
+						<div class="input-transform"></div>
+						Mostra password
+					</label>
+			  </div>
+
+			  <div class="row">
+			  	<div class="col-xs-6"><button type="submit" class="btn btn-success" [disabled]="!signupForm.valid">Invia</button></div>
+			  	<div class="col-xs-6 text-right"><a routerLink="/signin">Login</a></div>
+			  </div>
+			-->
+			</form>
+		</div>
+	</div>
 </div>
+<!--
+		<hr>
+		<h2>Todo</h2>
+		<ul>
+			<li><del>inputs valid class on landing</del></li>
+			<li><del>save data in user service</del></li>
+			<li>save data in user service on server</li>
+			<li><del>pass user service data in header component: ?? observable ??</del></li>
+			<li>use <a href="https://gist.github.com/btroncone/a6e4347326749f938510" target="blank">app store</a></li>
+		</ul>
+		<h3>Resources</h3>
+		<ul>
+			<li><a href="http://jasonwatmore.com/post/2016/09/29/angular-2-user-registration-and-login-example-tutorial" target="blank">1</a></li>
+		</ul>
+		<h4>Other resources</h4>
+		<ul>
+			<li>check reactive forms (<a href="https://angular.io/guide/reactive-forms" target="blank">link</a>)</li>
+			<li>check dynamic forms (<a href="https://angular.io/guide/dynamic-form" target="blank">link</a>)</li>
+		</ul>
+	-->

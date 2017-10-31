@@ -90,6 +90,12 @@ $container['App\Controllers\UserController'] = function ($c) {
 		$c->get('logger')
     );
 };
+$container['App\Controllers\ArtigianiController'] = function ($c) {
+    return new App\Controllers\ArtigianiController(
+    $c->get('logger')
+    );
+};
+
 # -----------------------------------------------------------------------------
 # Factories Models
 # -----------------------------------------------------------------------------

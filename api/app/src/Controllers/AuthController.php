@@ -20,16 +20,38 @@ final class AuthController
     $this->logger = $logger;
 	  $this->model = $user;
   }
+  public function signup(Request $request, Response $response, $args) {
+
+    $this->logger->info("Signup action dispatched");
+
+    $userData = $request->getParsedBody();
+
+    // TODO: 
+    // 1 - controllo se esiste email
+    // 2 - controllo dati
+    // 3 - registrazione a db
+    // 4 - invio mail di conferma
+    $data = [
+      'error' => 0,
+      'msg' => 'Registrazione avvenuta. Controlla mail',
+      'data' => null
+    ];
+
+    return $response
+      ->withJson($data);
+
+  }
+
 
   public function signin(Request $request, Response $response, $args)
   {
-    $this->logger->info("Home page action dispatched");
+    $this->logger->info("Signin action dispatched");
 
     $userData = $request->getParsedBody();
 
     // check credentials
     // TODO: verify against db
-    if (($userData['username'] === 'vitto') && ($userData['password'] === 'vitto')) {
+    if (($userData['email'] === 'vitto@vitto.com') && ($userData['password'] === 'vitto')) {
 
       $tokenId    = base64_encode(mcrypt_create_iv(32));
       $issuedAt   = time();
@@ -48,7 +70,7 @@ final class AuthController
         'exp'  => $expire,                  // Expire
         'data' => [                         // Data related to the signer user
           'userId'   => 1, // $rs['id'],   // userid from the users table
-          'userName' => $userData['username'], // User name
+          'email' => $userData['email'], // User name
         ]
       ];
 

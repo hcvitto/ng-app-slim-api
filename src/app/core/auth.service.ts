@@ -5,6 +5,7 @@ import { Observable } from 'rxjs/Observable';
 import { Observer } from "rxjs/Observer";
 import 'rxjs/add/operator/map';
 import "rxjs/add/operator/share";
+import 'rxjs/add/operator/catch';
 
 import * as myGlobals from "../shared/globals";
 
@@ -32,12 +33,24 @@ export class AuthService {
     }
   }
 
-  login(username: string, password: string): Observable<boolean> {
-
-    let payload = JSON.stringify({ username: username, password: password });
+  signup(email: string, password: string): Observable<any> {
+    let payload = JSON.stringify({ email: email, password: password });
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
 
+    return this.http.post(myGlobals.API_URL + 'signup', payload, options)
+      .map((response: Response) => response.json())
+      /*.catch((error:any) => Observable.throw(error.json().error || 'Server error'))*/;
+
+  }
+
+  login(email: string, password: string): Observable<any> {
+
+    let payload = JSON.stringify({ email: email, password: password });
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });
+
+    var p;
 
     return this.http.post(myGlobals.API_URL + 'signin', payload, options)
       .map((response: Response) => {
@@ -48,16 +61,31 @@ export class AuthService {
           this.token = token;
 
           // store username and jwt token in local storage to keep user logged in between page refreshes
-          localStorage.setItem('currentUser', JSON.stringify({ username: username, token: token }));
+          localStorage.setItem('currentUser', JSON.stringify({ email: email, token: token }));
 
           this.changeState(true);
 
+          p = {
+            error: false,
+            msg: 'Login succesfull',
+            data: {
+              name: 'Vitto',
+              surname: 'Pitto',
+              activity: 'webbb'
+            }
+          }
           // return true to indicate successful login
-          return true;
+          //return p;
+          //return true;
         } else {
+          p = {
+            error: true,
+            msg: 'Wrong data'
+          }
           // return false to indicate failed login
-          return false;
+          //return false;
         }
+        return p;
       });
 
   }
@@ -67,7 +95,7 @@ export class AuthService {
     this.changeState(false);
     this.token = null;
     localStorage.removeItem('currentUser');
-    //this.router.navigate(['/signin']);
+    this.router.navigate(['/signin']);
   }
   
 }

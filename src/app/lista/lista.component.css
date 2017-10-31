@@ -1,0 +1,182 @@
+.error {
+	color: red;
+	padding: 10px;
+	text-align: center;
+}
+.lista-artigiani {
+	border-top: 1px solid #eee;
+	-webkit-transition: all .3s cubic-bezier(.1, .8, .9, 1);
+	-moz-transition: all .3s cubic-bezier(.1, .8, .9, 1);
+	transition: all .3s cubic-bezier(.1, .8, .9, 1);
+}
+.lista-artigiani.landed {
+	-webkit-transform: translateY(0);
+	-moz-transform: translateY(0);
+	transform: translateY(0);
+}
+.lista-artigiani li {
+	border-bottom: 1px solid #eee;
+	height: 80px;
+	overflow: hidden;
+	position: relative;
+	-webkit-transition: all .3s cubic-bezier(.1, .8, .9, 1);
+	-moz-transition: all .3s cubic-bezier(.1, .8, .9, 1);
+	transition: all .3s cubic-bezier(.1, .8, .9, 1);
+}
+.main-data,
+.back-data {
+	height: 100%;
+	position: relative;
+}
+.main-data {
+	z-index: 2;
+}
+.slide {
+  align-items: center;
+	background-color: #fff;
+	display: flex;
+	float: left;
+	height: 100%;
+	padding: 5px;
+	width: 85%;
+	-webkit-transform: translateX(0);
+	-moz-transform: translateX(0);
+	transform: translateX(0);
+	-webkit-transition: all .3s cubic-bezier(.1, .2, .3, 1);
+	-moz-transition: all .3s cubic-bezier(.1, .2, .3, 1);
+	transition: all .3s cubic-bezier(.1, .2, .3, 1);
+}
+.active .slide {
+	-webkit-transform: translateX(-100%);
+	-moz-transform: translateX(-100%);
+	transform: translateX(-100%);
+}
+.img-wrapper {
+	background-position: center;
+	background-size: cover;
+	border-radius: 50%;
+	float: left;
+	height: 50px;
+	margin: 0 10px;
+	overflow: hidden;
+	width: 50px;
+}
+h1 {
+	color: #bf360c;
+	font-size: 18px;
+	font-weight: 300;
+	margin: 0;
+}
+h1 span {
+	color: #dd2c00;
+	font-size: 13px;
+}
+.toggle {
+	background-color: #fff;
+	border-left: 1px solid #eee;
+	color: #600202;
+	float: right;
+	font-size: 32px;
+	line-height: 80px;
+	text-align: center;
+	width: 15%;
+}
+.toggle span {
+	color: #bf360c;
+	display: block;
+	-webkit-transform: rotate(0);
+	-moz-transform: rotate(0);
+	transform: rotate(0);
+	-webkit-transition: all .3s cubic-bezier(.1, .2, .3, 1);
+	-moz-transition: all .3s cubic-bezier(.1, .2, .3, 1);
+	transition: all .3s cubic-bezier(.1, .2, .3, 1);
+}
+.active .toggle span {
+	-webkit-transform: rotate(135deg);
+	-moz-transform: rotate(135deg);
+	transform: rotate(135deg);
+}
+.back-data {
+	align-items: center;
+	display: flex;
+	font-size: 18px;
+	justify-content: space-evenly;
+	justify-content: center;
+	width: 85%;
+	z-index: 1;
+	-webkit-transform: translateY(-100%);
+	-moz-transform: translateY(-100%);
+	transform: translateY(-100%);
+}
+.back-data a {
+	/*border: 1px solid #fff;
+	border-radius: 50%;
+	color: #fff;
+	height: 32px;
+	line-height: 30px;
+	margin: 0;
+	opacity: 0;
+	text-align: center;
+	width: 32px;
+	-webkit-transform: translateX(-100%);
+	-moz-transform: translateX(-100%);
+	transform: translateX(-100%);
+	-webkit-transition: all .3s;
+	-moz-transition: all .3s;
+	transition: all .3s;*/
+}
+.back-data i {
+	border: 1px solid #fff;
+	border-radius: 50%;
+	color: #fff;
+	height: 32px;
+	line-height: 30px;
+	margin: 0;
+	opacity: 0;
+	text-align: center;
+	width: 32px;
+	-webkit-transform: translateX(-100%);
+	-moz-transform: translateX(-100%);
+	transform: translateX(-100%);
+	-webkit-transition: all .3s;
+	-moz-transition: all .3s;
+	transition: all .3s;
+}
+.active .back-data {
+	z-index: 3;
+}
+.active .back-data i {
+	margin: 0 15px;
+	opacity: 1;
+	-webkit-transform: translateX(0);
+	-moz-transform: translateX(0);
+	transform: translateX(0);
+}
+@media only screen and (min-width: 768px) {
+	.lista-artigiani {
+		display: flex;
+		flex-wrap: wrap;
+	}
+	.lista-artigiani li {
+		margin: 1%;
+		width: 48%;
+	}
+}
+@media only screen and (min-width: 1024px) {
+	.lista-artigiani li {
+		box-shadow: 0 0 4px #888888;
+		height: 80px;
+		margin: 20px;
+		overflow: hidden;
+		position: relative;
+		-webkit-transition: all .3s cubic-bezier(.1, .8, .9, 1);
+		-moz-transition: all .3s cubic-bezier(.1, .8, .9, 1);
+		transition: all .3s cubic-bezier(.1, .8, .9, 1);
+		width: 31%;
+	}
+}
+@media only screen and (min-width: 1200px) {
+	.lista-artigiani li {
+		width: 23%;
+	}
+}

@@ -1,0 +1,75 @@
+<div id="scheda" [ngClass]="{'active-map': showMap, 'active-form': showForm}" [@fadeIn]>
+	<div id="header">
+		<div id="main-pic" [ngStyle]="{'background-image': 'url(' + data.mainPic + ')'}"></div>
+		<div id="nome">
+			<h1>{{ data.shop }} <i (click)="toggleMap()" class="fa" [ngClass]="showMap ? 'fa-close' : 'fa-map-marker'"></i></h1>
+			<h2>di {{ data.nome }} {{ data.cognome }}</h2>
+		</div>
+	</div>
+	<div id="mappa">
+		<agm-map [latitude]="data.coord.lat" [longitude]="data.coord.lon" [zoom]="16" #mappa>
+		  <agm-marker [latitude]="data.coord.lat" [longitude]="data.coord.lon" [openInfoWindow]="true">
+		  	<agm-info-window [isOpen]="true" #infoWindow>
+		  		{{ data.indirizzo }}
+		  	</agm-info-window>
+		  </agm-marker>
+		</agm-map>
+	</div>
+	<div id="data">
+		<div id="social">
+			<a (click)="toggleForm()" class="contact"><i class="fa fa-envelope"></i></a>
+			<a *ngFor="let s of data.social" href="{{ s.url }}"><i class="fa fa-{{ s.nome }}"></i></a>
+		</div>
+		<div id="data-content">
+			<div id="contact-form">
+				
+				<form #signinForm="ngForm" novalidate>
+
+					<div class="form-group">
+				    <label for="email" class="hidden">Label</label>
+		        <input type="email" class="form-control" name="email" id="email" placeholder="Email" required>
+				  </div>
+
+					<div class="form-group">
+				    <label for="email" class="hidden">Label</label>
+		        <input type="email" class="form-control" name="email" id="email" placeholder="Email" required>
+				  </div>
+
+					<div class="form-group">
+				    <label for="email" class="hidden">Label</label>
+		        <input type="email" class="form-control" name="email" id="email" placeholder="Email" required>
+				  </div>
+
+					<div class="form-group">
+				    <label for="email" class="hidden">Label</label>
+		        <input type="email" class="form-control" name="email" id="email" placeholder="Email" required>
+				  </div>
+
+					<div class="form-group">
+				    <label for="email" class="hidden">Label</label>
+		        <input type="email" class="form-control" name="email" id="email" placeholder="Email" required>
+				  </div>
+				  
+				  <div class="row">
+				  	<div class="col-xs-6"><button type="submit" class="btn btn-success">Invia</button></div>
+				  </div>
+				</form>
+
+			</div>
+			<div class="tabs-wrapper">
+				<div class="tabs-nav">
+					<div class="tab-title" [ngClass]="{'active': activeTab === 'tab1'}" (click)="activateTab('tab1')">Parole</div>
+					<div class="tab-title" [ngClass]="{'active': activeTab === 'tab2'}" (click)="activateTab('tab2')">Immagini</div>
+				</div>
+				<div class="tabs-content">
+					<div id="description" class="tab-content" [ngClass]="{'active': activeTab === 'tab1'}">
+						{{ data.descrizione }}
+					</div>
+					<div id="gallery" class="tab-content" [ngClass]="{'active': activeTab === 'tab2'}">
+						<div *ngFor="let i of data.gallery"  [ngStyle]="{'background-image': 'url(' + i + ')'}"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
